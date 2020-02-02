@@ -10,3 +10,4 @@ gunicorn
 jinja2
 setuptools
 textgenrnn
+tensorflow
