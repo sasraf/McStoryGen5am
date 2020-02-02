@@ -44,6 +44,9 @@ def storyGeneration():
         generatedText = reader.read()
         return render_template("storygen.html", outputText=generatedText)
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',debug=True)
+
 # @app.route("/installBooks", methods=["GET"])
 # def installBooks():
 #     """Install books"""
