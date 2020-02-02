@@ -1,1 +1,1 @@
-web: gunicorn StoryGeneratorWebsite --log-file -
+web: python StoryGeneratorWebsite.py --log-file -
