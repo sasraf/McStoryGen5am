@@ -4,7 +4,7 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # from pymongo import MongoClient
 
 from helperFunctions import *
-from Main import *
+from textgenrnn import textgenrnn
 
 # Configure MongoDB Client
 # client = MongoClient("mongodb+srv://Sakib:<VdnPnbDAokF6yGtC>@storygenerator-qp5jo.mongodb.net/test?retryWrites=true&w=majority")
@@ -12,6 +12,10 @@ from Main import *
 
 # Configure App
 app = Flask(__name__)
+
+textgen = textgenrnn(weights_path='Test3_weights.hdf5',
+                           vocab_path='Test3_vocab.json',
+                           config_path='Test3_config.json')
 
 # App autoreloads
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -34,7 +38,8 @@ def storyGeneration():
     if request.method == "GET":
         # generatedText = randomWords("time", 100)
 
-        runTextGen()
+        textgen.generate_samples(max_gen_length=1000)
+        textgen.generate_to_file('textgenrnn_texts.txt', max_gen_length=1000)
         reader = open("textgenrnn_texts.txt","r")
         generatedText = reader.read()
         return render_template("storygen.html", outputText=generatedText)
