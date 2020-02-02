@@ -37,7 +37,7 @@ def storyGeneration():
         runTextGen()
         reader = open("textgenrnn_texts.txt","r")
         generatedText = reader.read()
-        return render_template("storygen.html", outputText="Once upon a " + generatedText)
+        return render_template("storygen.html", outputText=generatedText)
 
 # @app.route("/installBooks", methods=["GET"])
 # def installBooks():
