@@ -9,3 +9,4 @@ six
 gunicorn
 jinja2
 setuptools
+textgenrnn
